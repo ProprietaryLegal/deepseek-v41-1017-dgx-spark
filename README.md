@@ -1,5 +1,12 @@
 # DeepSeek-V4.1-Flash-1017 on 2× DGX Spark (GB10) — EXL3 2.75 bpw, 320K context
 
+> **PLI Labs fork, branch `pli/dgx-spark-offload`** (on top of upstream `b1726644`, image v5): see
+> [`pli-offload/README.md`](pli-offload/README.md) — Engram tables served from an x86 host's RAM over RDMA (TTFT −5.4 %
+> @32K, −5.7 % @150K) and the DSpark drafter on an RTX 3090 with the freed memory spent on KV (989,460 → 1,604,926
+> tokens; 4 × 300K concurrent), plus a GB10 stream-wait deadlock note and a 0057/0060 allocator reproduction.
+> Entries: [combined](https://huggingface.co/ProprietaryLegal/DeepSeek-V4.1-Flash-2xDGX-Spark-x86-offload) ·
+> [GitHub](https://github.com/ProprietaryLegal/pli-labs/tree/main/research/dgx-spark-offload).
+
 A ready-to-run setup for **[DeepSeek-V4.1-Flash-1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017)** on
 **two DGX Spark / GB10** nodes with tensor parallelism 2: our EXL3 quantization
 ([HeNryous/DeepSeek-V4.1-Flash-1017-EXL3-2.75bpw-DGX-Spark](https://huggingface.co/HeNryous/DeepSeek-V4.1-Flash-1017-EXL3-2.75bpw-DGX-Spark),
