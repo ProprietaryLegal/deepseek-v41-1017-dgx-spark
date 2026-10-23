@@ -21,8 +21,8 @@ Two notes for this patch set:
 - **GB10 stream-wait deadlock.** Parking a stream on `cuStreamWaitValue32` while another thread must make any CUDA call to
   release it deadlocks against first-time module loads (lazy-loaded kernels, and Triton's `cuModuleLoadData`, which
   `CUDA_MODULE_LOADING=EAGER` does not cover). The Engram spin reader is safe because its release is a CPU store; our async
-  drafter now uses the same pattern. Since measured on GB10 as a separate, torch-free proxy process: −0.9 to −3.9 % per
-  decode round with one drafter card, −3.9 to −6.5 % with two, time to first token at parity; in production since
+  drafter now uses the same pattern. Since measured on GB10 as a separate, torch-free proxy process: −1.0 to −4.0 % per
+  decode round with one drafter card, −3.9 to −6.3 % with two, time to first token at parity; in production since
   2026-10-23:
   https://huggingface.co/ProprietaryLegal/dsv41-async-hostflag-handoff
 - **0057/0060 pairing reproduction (allocator only, not yet run on GB10).** The chain 0051→0053→0057→0059(code, NVFP4
